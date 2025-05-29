@@ -1,7 +1,364 @@
-# TODO
-Add a get similar cards field to the response of the tool that looks at https://json.edhrec.com/pages/commanders/zurgo-stormrender.json to get the similar cards field
-[types](https://www.typescriptlang.org/play/?#code/JYOwLgpgTgZghgYwgAgKIBMAWUIIMID2AtkXCOtAEoQDOArgDZg3IDeAsAFDLIIHhxQ0AFxsuPHgCMccdAih0ik0QEEoUOAE8APB24SeAbQDWETaJpgooAOYBdC1dsBucRIC+APlf6eFGvLAAA5gwPyO1iA2PgYAVjT8AProwAhgonoGPAhwUOgMwJY0qupaum5ZyJgQsiLIlpHRFVlgcDYRLs0GOXkAbsAQAO7FyGoaOpmVEiBwRBAdUTFTPDRkwKEAXhDoC02+U6sg68Bb6ImDBLtLy3RQDFddWTSaINA25sggipLQ11OgCAYdBoYRAoi+Sl+jwMDDgP3u9Sci2h00UyVwxhGEJ+UD+lSCBEg4GAcAY6IQmPB3yh+0qPXQNAA-CVxuVaVMZnMHuzKrcEQ1OjyPN4UV48cgxY96RkUQCgSDwp9qbiURDyZSlZCVUKCUTQqT1VjleKeHAIGBqlBMHRJIlbsBuctcghMMAKMYwHbrI6pnwGAQoIk3RBiWAPmMyoR-VARUKEEQEFStSbkBQKZY4MwvQ7EY0U8BSDYINmRoYUTxJssVqQGPykXsq9MAzWfY3YVAi62q0Eol2nVBPfICEE+1NJAGKIGhyPc4LG+4UXYU7DNAQ6OlZ8ihUQCAAPGADBhne2jnhEMA2GwEI8HmiYbOnz6zeabhsc58jCM6AVRWPLILWEgIyVr6uRYAQYF1CB-6AS+2LQMgAA+Sq1imBh8o+PDuGhvBgcYtjoMQMpCgYAGpHBypIShDA4TwGGvjh2HlrheSkFApgbtBUxkUgSY4lRXyocxdF3JhEo4fASAAEySS+XH4rBfEIchgk0cJyD0T+b7LExJHIOeNiWAQ6bEY2PA8RRWoCYwal6SJdZ5sxumNmACA2EEK5QepFlKVA1lCXZGmiQxTkps53HWGxmiJGGQQvlpKYaNYYaPqsTC+SmhzHKcqVrJs2znJcIVCgEUCaPAtYPq+-m2csNBxbW44EMYVVaTVKaxfF9b5jQiR8CQZCTqITUMDUIDLnCEAOXOUyjTYBr9aQ5B1CNY0pgBuD8MyxU3MFbUqTZ4rhQYpiaBceQjAljyhGAo1duF4XyDUYC3JZOJLKAGbgBlbgJFASBlT9+i5KEkkbvB2o8CGLpkGAczfZq71uB5ZC0IMpKmFAQM8LC5DY8gkhwCCiaIzSPAgPwhPE-jzquu6G5fmy3RdjA+M8AAjmzGk+pK+hBCD0CvK5a7gJ+pQTM0fB0AjEN-NgECsztEi9KSdBdY5+i8ysBbAO2LJlCB9Ji6yXFG-rEtCgQkixLgG5XUKbqPgGiCjUGOxK5URCMKEvTQDQxZuqWENLiiBkEG7XMGK57meYGjuk5DoGsbkHERwnKacurM2VLj7Qe1kOCjUTBWZo+J75wYpXlaSZLl-bywrmudvdSiro2PLvUFm0L5WGr+aFsWGYvZdLcOwPJamVWNA1tNW6NhTUAthXWTtp2y+kb268SCDfVQMOYnjnk0C7-vW-HVkS1wH1BCWI+8Yk7LKKdYkBSvE7GiAsWkC7s3Gv-gQgw6j1ymGANc7dXg0BHn-X014Ayli0gAGlfCHOMsC44UFDB8QwiDkEplOudBkohsH1hQQ3CA80CihFoJPOqrRyBgTEjAdcr0xKuiMoBMSNhYQpEzAGMSQRQQQCAaPRsEBdweQDMI6BywdyTjBFvHG5DEAfGAf+OAdA4pYwUcgfoAg16qO4iGEAKiRFVkWoNKR2cpgQQtNIGomMD4aEGLPbSUw2GgMAtIOAzixKkhdBAIgJjpHcXUZo8xy0tEGMqOgNWLicLXgZC6Ag15+E4FkYLVJ2xMCPnPgYeacx4H1iQVpUhUwcD+ygL7d2FV-YphgAQXWogakQAzvwepjTkC9xaSiA8Rw7zUOQMQxopTKgEF9lAEEOVkDNPWnvHcTTSS1JRDgMiCMukphVtYTMoIFkMCWSVc0acokSH9r-KxldDmZ1Soczq1zPR11MZUU5iR-a01ao8p48hq6VWeQ84JBgFCv0Mu8-5EhVlZlef9e8fzzkSD9KNNIAZEgQ0fCkGw6xSS7P2csJK6wgmwp4DAWEvQkXfw3AAIi0gAHRAFpclKZ6SJEJhSI5HyDAg0KGcueUwOWWDdoU4Z+ZazAisNspI8djlSAnMfP0fCt4wA0FyeViriwKxgLbAVtgRlPFwPaMMLzWhEBnJK6ZNlEggyxd0oUZLRqQMtSmJqlg6gzJROw6K9VCQFHbhuF1Qosk4AQIkDQIBjCRzBUY6KwbQ3pxRBZYCzF6SYAgkfLR8ksg+RjYFTSbKsi5KyPSfCURCJEBod2RSmazJBTiaFBNYE2IcVLTBciYbeR7RzQYPNBhZIQ1ko2iKzaK1mWzaCjtOEDJGRMmIQKGbH5ZrbSOjwOFo4o00F5ad5bZ2VuHQSxdopEpTUzAVe08a9LzQtNASx3LljLtjkGEAvT1jFg5Z-KBO6eA3q0MfUAD7ICGjEv63AOT1q3Bhv7CeU6XJuRXZe1xdI60p3NGJRNyahpn0yl8iqZIrlb0zpqqI2qDCExAK8apiyrVkIodfAaETRDrJRHNA0-MByvC0b6ijC1iD8yOIqNjEVNryJNWlcGxpXWkk9FJAADFJAAjC2+oYnEiSck3JoTimJPSYAJxyZqHcAYfLTmPlhJAPl4LDOHv04hrepy8M2GKUU3Bqohj2qfm0GzBGJDS2AOzNW5qBznWjWWPSab2UDk5WJbI14EUeORcqcL9RLMmouZ6bDiWJBdyLOBoZWrGIIOYsF7eoXb7aIi7WW2SKUXFfi1y2DBxLnPji+l4sx6iElMYouFM0sCAwAPAgEkCJeOVDNOeq0NoQU7rTJiVoWYYVXovnuA8U1jzei3rTYMHoxuzYMAZK8N5CjQuWya7dm2TkNQYE1Fq5dVIdU0HFVKNpOrGzKFpP8BwNHQAe+bbQz3rtxUe9+esL2FJdzKjFG7WdjtayyENy01pbQzZq6t+mG2auyvQSGG64ZxZfYB+Ke+YaJtD16vD8UjXwOMzTdPGuj4F5LxNavcHNXzKbxNTvacj5D6ThPsanNkOYRaCbqOHc+5DxLZzMc7bCTbz7bFzmlLsuPyfe+48ONfbshgSTZBVNzEZ0ib0kdxn4kUQFoIkRCDZaB2bqrPrsKDL4PsUs-lnXyZmLW73T0xAIZlS9rN023ig7drVqFJ2-SF4J0akdxu3XjZXdB46lB2OquwWR+d3r+dO6815rIlFUHt3l64pSsvITYasr5XdsckvJwCoXFHFXTDyPxT1Smmd5JF3ltXeumD0cDGyThNQ3R9kG0+ACZzTHjtgPkDQ+gLD+vzREcQHW8TyWaC3bo7xYrnHksExcwJ1NonB2Pmk+a6MLHXFKe1lHDTzFy96ejh7HnY5rO97c9BRzmVT-7rj8buuLsQuFtHhn-sBLrtneAAQYHLsErhuvo0OPirj7nCurihmur7m9GTFMKPrmrjnhCbiWnAaRMnkjEKOgaOlKHbg2rgUnhblHmgWnhDuKLJDJB7onk7gQQHqOHmuOqApOmmswaga2oHpUHmh+qulrjqPgbwVkEQbuvsOfFnrkNFLcvnPnvirNkXv7vJkcKXl2BXqcIVFoRhjXKASdk3udlVO3vsAoQYt3lRktKhqtGQH8IPoqAYugZDtULUJEqYlxlNCeqRAMDDAOH2kPnqJ9mmrCPCI+CrECCgYnHSGgmwePu+usHdPnOfK-BqOTo8G4ahsco+kQH9kzG4jgIrCapEWrHfLcDgOANtHYeNCiGJttPtNRCmGIpAFADMAwNUckkXLUeyLzichAExrwlAJ0deGtM0H0U4PCKAOHo8JIHQOgEWAzCfkbiLMJinssOSvLDAAALT0DdbAC7jkoRGqwM5HQJGdLVAFIhErHSxrEsFTCbFFG7F0D7GHHHFRHxHiiXx9S3C+yJ4mBmC+QOBqFYTihMZgAsZSyizXFChia7DtStxFHvFlHLx9ERZKDGSrH5FpqlGnF1HpTVQHQBTLBbGfGPDPq2owlOgEks7rhJoiGNhwAqytAeELo8DxyW4NzTFiTgHp4pjoCHqPhiIAwhCPiklWaPqJ6mgCJiQSrtrTD1baJMbo6JD8wZYclUHXqubDRdFjGx4oi4mPhzA8JknsiFyHpnD9AUBFRprqIWhyr5ZMmZi5CynuycmzTcnaK8nHaglG5gT5FK5xiHpXjWADIZF6QanrFVhpE8mKkmpokSACmQCoqHqJA2DnhCm7ginVb5humalPCSnkHsoynaJylslPhKqpbKngCqndxpzumVCtCGQ6mjH2Fu5CgxlbyyLAALZnDpk5lPxJF4nWranH4mzMSRn3FckhqxmVnykJk8CrjMI-BsF-APRLD+CBAhA7JKz0gFBFbhlgFxkfLaHbBaF5SV5nDV75ySHPAsbvBcxqgE5cy6ir4GjPlqFGzbSHlZDek1aSGQ68wLicBAA)
+# Scryfall MCP Server
 
+A Model Context Protocol (MCP) server that provides advanced Magic: The Gathering card data retrieval and search capabilities using the Scryfall API and EDHREC resources.
 
-## prompt
-Can you help me implement the include_similar_cards feature for the getCardData tool? it's going to hit the edhrec api located at https://json.edhrec.com/pages/commanders/{lowercased-card-name-with-dashes}.json. We'll want a new function in the scryfall client. the model is located in @modelfile, but we definetly don't need all those fields.  We just need to return the names and main info for the similar cards returned.
+## Overview
+
+This MCP server acts as a bridge between MCP-compatible clients (like Claude Desktop, Cline, or other AI assistants) and Magic: The Gathering card databases. It provides intelligent caching, rate limiting, and comprehensive card data including rulings and similar card recommendations from EDHREC.
+
+## Features
+
+- **🃏 Card Data Retrieval**: Fetch comprehensive information about Magic: The Gathering cards using fuzzy name matching
+- **🔍 Advanced Card Search**: Use Scryfall's powerful search syntax to find cards with complex queries
+- **💾 Intelligent Caching**: Local caching system to reduce API calls and improve performance
+- **📋 Rulings Integration**: Optional inclusion of official card rulings from Scryfall
+- **🎯 Similar Card Recommendations**: Integration with EDHREC to suggest similar cards for deck building
+- **⚡ Rate Limiting**: Respectful API usage with built-in rate limiting (75ms between requests)
+
+## Prerequisites
+
+### System Requirements
+
+- **Deno Runtime**: Version 1.40+ (with `--unstable-temporal` support)
+- **Operating System**: Linux, macOS, or Windows
+- **Network Access**: Required for API calls to Scryfall and EDHREC
+
+### Installing Deno
+
+If you don't have Deno installed:
+
+**Linux/macOS:**
+```bash
+curl -fsSL https://deno.land/install.sh | sh
+```
+
+**Windows (PowerShell):**
+Ai generated; proceed with caution. 
+```powershell
+irm https://deno.land/install.ps1 | iex
+```
+
+**Package Managers:**
+```bash
+# macOS with Homebrew
+brew install deno
+
+# Ubuntu/Debian
+sudo snap install deno
+
+# Arch Linux
+pacman -S deno
+```
+
+Verify installation:
+```bash
+deno --version
+```
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd scryfall-mcp-server
+```
+
+### 2. Test the Server
+
+Verify the server works correctly:
+
+```bash
+deno run --allow-net --allow-read --allow-write --allow-env --unstable-temporal main.ts
+```
+
+The server should start and display:
+```
+Scryfall MCP server running on stdio
+```
+
+Press `Ctrl+C` to stop the test.
+
+### 3. Set Up Cache Directory
+
+The server automatically creates a cache directory at `~/.scryfall-mcp-cache` on first run. You can verify this:
+
+```bash
+ls -la ~/.scryfall-mcp-cache
+```
+
+## MCP Client Configuration
+You should actually look this up, this may not be accurate
+### Claude Desktop
+
+Add the following to your Claude Desktop configuration file:
+
+**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "scryfall": {
+      "command": "deno",
+      "args": [
+        "run",
+        "--allow-net",
+        "--allow-read",
+        "--allow-write",
+        "--allow-env",
+        "--unstable-temporal",
+        "/absolute/path/to/scryfall-mcp-server/main.ts"
+      ]
+    }
+  }
+}
+```
+
+### Cline (VSCode Extension)
+
+Add to your Cline MCP settings or `.vscode/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "scryfall": {
+      "command": "deno",
+      "args": [
+        "run",
+        "--allow-net",
+        "--allow-read",
+        "--allow-write",
+        "--allow-env",
+        "--unstable-temporal",
+        "/absolute/path/to/scryfall-mcp/main.ts"
+      ]
+    }
+  }
+}
+```
+
+### Other MCP Clients
+
+For any MCP-compatible client, use these connection parameters:
+
+- **Command**: `deno`
+- **Arguments**: 
+  - `run`
+  - `--allow-net` (for API calls)
+  - `--allow-read` (for cache reading)
+  - `--allow-write` (for cache writing)
+  - `--allow-env` (for environment variables like HOME)
+  - `--unstable-temporal` (for modern date/time handling)
+  - `/absolute/path/to/main.ts`
+
+**⚠️ Important**: Replace `/absolute/path/to/scryfall-mcp/main.ts` with the actual absolute path to your `main.ts` file.
+
+## Tools Reference
+
+### 1. get_card_data
+
+Retrieve detailed information about specific Magic: The Gathering cards.
+
+#### Parameters
+- `card_names` (required): Array of card names to fetch
+- `include_rulings` (optional, default: false): Include official card rulings
+- `include_similar_cards` (optional, default: false): Include EDHREC similar card recommendations
+
+#### Example Usage
+```json
+{
+  "card_names": ["Lightning Bolt", "Counterspell"],
+  "include_rulings": true,
+  "include_similar_cards": true
+}
+```
+
+#### Response Format
+```json
+[
+  {
+    "name": "Lightning Bolt",
+    "mana_cost": "{R}",
+    "type_line": "Instant",
+    "oracle_text": "Lightning Bolt deals 3 damage to any target.",
+    "cmc": 1,
+    "colors": ["R"],
+    "legalities": {
+      "standard": "not_legal",
+      "modern": "legal",
+      "commander": "legal"
+    },
+    "rulings": [...],
+    "similar_cards": [...]
+  }
+]
+```
+
+### 2. search_cards
+
+Search for Magic: The Gathering cards using Scryfall's advanced search syntax.
+
+#### Parameters
+- `query` (required): Scryfall search query
+- `max_results` (optional, default: 25, max: 175): Maximum number of results
+- `unique` (optional, default: 'cards'): How to handle duplicates ('cards', 'art', 'prints')
+- `order` (optional, default: 'name'): Sort order
+- `include_extras` (optional, default: false): Include tokens and planes
+
+#### Search Query Examples
+
+| Query | Description |
+|-------|-------------|
+| `o:"create" o:"token"` | Cards that create tokens |
+| `t:equipment` | All equipment cards |
+| `c:red pow>=4` | Red creatures with power 4+ |
+| `o:flying t:creature` | Flying creatures |
+| `f:commander` | Commander-legal cards |
+| `s:dom` | Cards from Dominaria set |
+| `r:mythic` | Mythic rare cards |
+| `cmc=3` | Cards with converted mana cost 3 |
+
+#### Advanced Search Syntax
+
+- **Oracle Text**: `o:"text"` or `oracle:"text"`
+- **Type Line**: `t:creature` or `type:artifact`
+- **Colors**: `c:red` or `color:blue`
+- **Mana Cost**: `m:{2}{R}` or `mana:{U}{U}`
+- **Power/Toughness**: `pow>=4`, `tou<=2`
+- **Rarity**: `r:common`, `r:uncommon`, `r:rare`, `r:mythic`
+- **Set**: `s:dom` (set code) or `set:"Dominaria"`
+- **Format Legality**: `f:standard`, `f:modern`, `f:commander`
+- **Converted Mana Cost**: `cmc=3`, `cmc>=5`
+
+For complete syntax reference, see: https://scryfall.com/docs/syntax
+
+## Cache Management
+
+### Cache Location
+- **Linux/macOS**: `~/.scryfall-mcp-cache/`
+- **Windows**: `%USERPROFILE%\.scryfall-mcp-cache\`
+
+### Cache Structure
+```
+~/.scryfall-mcp-cache/
+├── similar/                    # EDHREC similar cards cache
+│   └── card-name.json         # Cached for 1 year
+└── card-name.json             # Individual card cache
+```
+
+### Cache Maintenance
+
+**View cache size:**
+```bash
+du -sh ~/.scryfall-mcp-cache
+```
+
+**Clear all cache:**
+```bash
+rm -rf ~/.scryfall-mcp-cache
+```
+
+**Clear only similar cards cache:**
+```bash
+rm -rf ~/.scryfall-mcp-cache/similar
+```
+
+## Development
+
+### Running Tests
+
+```bash
+deno test --allow-net --allow-read --allow-write --allow-env --unstable-temporal
+```
+
+### Code Structure
+
+- `main.ts` - Main MCP server implementation and API client
+- `model.ts` - TypeScript interfaces for EDHREC API responses
+- `deno.json` - Deno configuration and dependencies
+
+### Key Components
+
+1. **ScryfallClient**: Handles API communication with rate limiting
+2. **Cache Management**: File-based caching with TTL for similar cards
+3. **MCP Server**: Protocol implementation with tool handlers
+4. **Rate Limiting**: 75ms delay between API requests
+
+## Troubleshooting
+
+### Common Issues
+
+**"Permission denied" errors:**
+- Ensure all required Deno permissions are granted
+- Check that the cache directory is writable
+
+**"Module not found" errors:**
+- Verify Deno version supports the required features
+- Run `deno cache main.ts` to pre-download dependencies
+
+**API rate limiting:**
+- The server automatically handles rate limiting
+- If you see 429 errors, the built-in delays may need adjustment
+
+**Cache issues:**
+- Clear cache directory if you encounter stale data
+- Check disk space if cache operations fail
+
+### Debug Mode
+
+Run with additional logging:
+```bash
+DENO_LOG=debug deno run --allow-net --allow-read --allow-write --allow-env --unstable-temporal main.ts
+```
+
+### Network Issues
+
+Test API connectivity:
+```bash
+curl -H "User-Agent: MCP-Scryfall-Client/1.0" "https://api.scryfall.com/cards/named?fuzzy=lightning%20bolt"
+```
+
+## Performance Notes
+
+- **First Run**: Slower due to cache building
+- **Subsequent Runs**: Faster with cached data
+- **Rate Limiting**: 75ms between API calls (respectful to Scryfall)
+- **Cache Expiry**: Similar cards cached for 1 year, regular cards indefinitely
+
+## API Limits and Fair Use
+
+This server respects the following limits:
+- **Scryfall API**: No official rate limit, but we use 75ms delays
+- **EDHREC API**: Unofficial API, cached aggressively (1 year TTL)
+- **User-Agent**: Properly identifies requests as "MCP-Scryfall-Client/1.0"
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+[Insert License Information]
+
+## Acknowledgments
+
+- **[Scryfall](https://scryfall.com/)** - Comprehensive Magic: The Gathering card database and API
+- **[EDHREC](https://edhrec.com/)** - Commander deck statistics and similar card recommendations
+- **[Model Context Protocol](https://modelcontextprotocol.io/)** - Protocol specification and SDK
+- **[Deno](https://deno.land/)** - Modern JavaScript/TypeScript runtime
+
+## Support
+
+For issues, questions, or contributions:
+- Open an issue on GitHub
+- Check existing issues for solutions
+- Review the troubleshooting section above
+
+---
+
+*This MCP server is not affiliated with Wizards of the Coast, Scryfall, or EDHREC.*
