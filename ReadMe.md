@@ -10,6 +10,7 @@ This MCP server acts as a bridge between MCP-compatible clients (like Claude Des
 
 - **🃏 Card Data Retrieval**: Fetch comprehensive information about Magic: The Gathering cards using fuzzy name matching
 - **🔍 Advanced Card Search**: Use Scryfall's powerful search syntax to find cards with complex queries
+- **🏗️ Deck Import**: Import and analyze complete Magic: The Gathering decks from Archidekt with detailed card information
 - **💾 Intelligent Caching**: Local caching system to reduce API calls and improve performance
 - **📋 Rulings Integration**: Optional inclusion of official card rulings from Scryfall
 - **🎯 Similar Card Recommendations**: Integration with EDHREC to suggest similar cards for deck building
@@ -233,6 +234,34 @@ Search for Magic: The Gathering cards using Scryfall's advanced search syntax.
 
 For complete syntax reference, see: https://scryfall.com/docs/syntax
 
+### 3. get_archidekt_deck
+
+Import and analyze complete Magic: The Gathering decks from Archidekt, including detailed card information for each card in the deck.
+
+#### Parameters
+- `deck_id` (required): The Archidekt deck ID from the deck URL
+
+#### Example Usage
+```json
+{
+  "deck_id": "12954377"
+}
+```
+
+#### Response Format
+```json
+{
+  "deck": {...}, // deck info
+  "cards": [...] // scryfall get_card_data response structure
+}
+```
+
+#### Finding Deck IDs
+
+Archidekt deck IDs can be found in the deck URL:
+- URL: `https://archidekt.com/decks/123456789`
+- Deck ID: `123456789`
+
 ## Cache Management
 
 ### Cache Location
@@ -274,16 +303,22 @@ deno test --allow-net --allow-read --allow-write --allow-env --unstable-temporal
 
 ### Code Structure
 
-- `main.ts` - Main MCP server implementation and API client
+- `main.ts` - Main entry point and MCP server initialization
+- `src/server.ts` - MCP server implementation with tool handlers
+- `src/scryfall_client.ts` - Scryfall API client with rate limiting
+- `src/archidekt_client.ts` - Archidekt API client for deck import
+- `src/cache.ts` - File-based caching utilities
+- `src/rate_limited_fetcher.ts` - HTTP client with rate limiting
 - `model.ts` - TypeScript interfaces for EDHREC API responses
 - `deno.json` - Deno configuration and dependencies
 
 ### Key Components
 
 1. **ScryfallClient**: Handles API communication with rate limiting
-2. **Cache Management**: File-based caching with TTL for similar cards
-3. **MCP Server**: Protocol implementation with tool handlers
-4. **Rate Limiting**: 75ms delay between API requests
+2. **ArchidektClient**: Handles deck import from Archidekt platform
+3. **Cache Management**: File-based caching with TTL for similar cards
+4. **MCP Server**: Protocol implementation with tool handlers
+5. **Rate Limiting**: 75ms delay between API requests
 
 ## Troubleshooting
 
@@ -348,6 +383,7 @@ This server respects the following limits:
 ## Acknowledgments
 
 - **[Scryfall](https://scryfall.com/)** - Comprehensive Magic: The Gathering card database and API
+- **[Archidekt](https://archidekt.com/)** - Magic: The Gathering deck building platform and API
 - **[EDHREC](https://edhrec.com/)** - Commander deck statistics and similar card recommendations
 - **[Model Context Protocol](https://modelcontextprotocol.io/)** - Protocol specification and SDK
 - **[Deno](https://deno.land/)** - Modern JavaScript/TypeScript runtime
@@ -361,4 +397,4 @@ For issues, questions, or contributions:
 
 ---
 
-*This MCP server is not affiliated with Wizards of the Coast, Scryfall, or EDHREC.*
+*This MCP server is not affiliated with Wizards of the Coast, Scryfall, Archidekt, or EDHREC.*
