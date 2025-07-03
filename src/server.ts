@@ -112,7 +112,7 @@ export class ScryfallServer {
         },
         {
           name: "get_archidekt_deck",
-          description: "Fetch a Magic: The Gathering deck from Archidekt and get detailed card information.  Some of the users decks include: Mardu Goblins aka Zurgo (12954377), Animated Army aka Bello (13392951), Mabel the Heir (11813582), and Maha the Night (13847540)",
+          description: "Fetch a Magic: The Gathering deck from Archidekt and get detailed card information.",
           inputSchema: {
             type: "object",
             properties: {
