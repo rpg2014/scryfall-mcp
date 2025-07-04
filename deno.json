@@ -8,6 +8,7 @@
     "@mcp/sdk": "npm:@modelcontextprotocol/sdk",
     "@std/path": "jsr:@std/path@1",
     "@std/fs": "jsr:@std/fs@1",
-    "archidekt": "npm:archidekt@0.0.14"
+    "archidekt": "npm:archidekt@0.0.14",
+    "zod": "npm:zod"
   }
 }

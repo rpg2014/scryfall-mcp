@@ -4,19 +4,20 @@ import { ScryfallClient } from "./scryfall_client.ts";
 import { CardData } from "./cache.ts";
 import { McpError, ErrorCode } from "npm:@modelcontextprotocol/sdk/types.js";
      
-export interface ArchidektCard {
-  card: {
-    oracleCard: {
+interface OracleCard {
       name: string;
       manaCost?: string;
-      typeLine?: string;
-      oracleText?: string;
+      types?: string[]
+      text?: string;
       power?: string;
       toughness?: string;
       colors?: string[];
       cmc?: number;
-      keywords?: string[];
+      // keywords?: string[];
     };
+export interface ArchidektCard {
+  card: {
+    oracleCard: OracleCard
   };
   quantity: number;
   categories: string[];
@@ -47,7 +48,7 @@ export interface DeckData {
     createdAt: string;
     updatedAt: string;
   };
-  cards: (CardData & { quantity: number; categories: string[] })[];
+  cards: (CardData & { quantity: number; categories: {categoryName: string, includedInDeck: boolean}[] })[];
 }
 
 export class ArchidektClient {
@@ -70,49 +71,49 @@ export class ArchidektClient {
       const cardNames = deckData.cards.map((card: ArchidektCard) => card.card.oracleCard.name);
       const uniqueCardNames = [...new Set(cardNames)];
 
-      const cards: (CardData & { quantity: number; categories: string[] })[] = [];
+      const cards: (CardData & { quantity: number; categories: {categoryName: string, includedInDeck: boolean}[] })[] = [];
       for (const cardName of uniqueCardNames) {
-        const archidektCard = deckData.cards.find((card: ArchidektCard) =>
+        const archidektCard: ArchidektCard = deckData.cards.find((card: ArchidektCard) =>
           card.card.oracleCard.name === cardName
         );
 
-        const oracleCard = archidektCard?.card.oracleCard;
-        if (oracleCard && oracleCard.manaCost && oracleCard.typeLine && oracleCard.oracleText) {
-          cards.push({
-        name: oracleCard.name,
-        mana_cost: oracleCard.manaCost,
-        type_line: oracleCard.typeLine,
-        oracle_text: oracleCard.oracleText,
-        power: oracleCard.power,
-        toughness: oracleCard.toughness,
-        colors: oracleCard.colors || [],
-        cmc: oracleCard.cmc || 0,
-        keywords: oracleCard.keywords || [],
-        quantity: archidektCard.quantity,
-        categories: archidektCard.categories,
-        legalities: { standard: "unknown", modern: "unknown", commander: "unknown" },
-        set_name: "unknown",
-        rarity: "unknown",
-        rulings_uri: undefined,
-        image_uris: { small: undefined, normal: undefined }
-          } as CardData & { quantity: number; categories: string[] });
-        } else {
+        // const oracleCard: OracleCard  = archidektCard?.card.oracleCard;
+        // if (oracleCard && oracleCard.manaCost && oracleCard.types && oracleCard.text) {
+        //   cards.push({
+        // name: oracleCard.name,
+        // mana_cost: oracleCard.manaCost,
+        // type_line: oracleCard.types.join(" "),
+        // oracle_text: oracleCard.text,
+        // power: oracleCard.power,
+        // toughness: oracleCard.toughness,
+        // colors: oracleCard.colors || [],
+        // cmc: oracleCard.cmc || 0,
+        // quantity: archidektCard.quantity,
+        // categories: archidektCard.categories,
+        // rulings_uri: undefined,
+        // image_uris: { small: undefined, normal: undefined }
+        //   } as CardData & { quantity: number; categories: string[] });
+        // } else {
           const scryfallData = await this.scryfallClient.getCardByName(cardName as string);
-          cards.push({
-        ...scryfallData,
-        quantity: archidektCard?.quantity || 1,
-        categories: archidektCard?.categories || []
-          } as CardData & { quantity: number; categories: string[] });
-        }
+        const categoryList: { id: number, name: string, includedInDeck: boolean }[] = deckData.categories
+        cards.push({
+          ...scryfallData,
+          quantity: archidektCard?.quantity || 1,
+          categories: archidektCard?.categories
+              .map(categoryName => categoryList.find(category => category.name === categoryName) || { id: 0, name: "Unknown Category", includedInDeck: true })
+              .map((category) => ({ categoryName: category.name, includedInDeck: category.includedInDeck })) || []
+        });
+        // }
       }
       
       // Transform the raw Archidekt response into our clean DeckData format
+      //This is probably wrong, but 3 is commander
       const formatMap: { [key: number]: string } = {
         1: "Standard",
         2: "Modern", 
-        3: "Legacy",
+        3: "Commander",
         4: "Vintage",
-        5: "Commander",
+        5: "Legacy",
         6: "Pioneer",
         7: "Historic",
         8: "Pauper"
