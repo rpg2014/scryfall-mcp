@@ -14,7 +14,7 @@ export class ScryfallServer {
   constructor() {
     this.server = new McpServer({
       name: "scryfall-server",
-      version: "0.1.0",
+      version: "0.2.0",
     });
     
     this.scryfallClient = new ScryfallClient();
